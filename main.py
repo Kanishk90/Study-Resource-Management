@@ -1,15 +1,16 @@
 from flask import Flask
 from application.models import db
 from config import DevelopmentConfig
-# from application.resources import api
+from application.resources import api
+
 def create_app():
     app = Flask(__name__)
     db.init_app(app)
     app.config.from_object(DevelopmentConfig)
-    # api.init_app(app)
+    api.init_app(app)
     with app.app_context():
         import application.views
-    app.init_app(app)
+   
     return app
 
 app = create_app()

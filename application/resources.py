@@ -4,9 +4,9 @@ from.models import db,StudyResource,Role,User
 api = Api(prefix='/api')
 parser = reqparse.RequestParser()
 
-parser.add_argument('topic',type=str,help='Topic Can be String only' ,requirement = True)
-parser.add_argument('description',type=str,help='Description Can be String only' ,requirement = True)
-parser.add_argument('resource_link',type=str,help='Resource link Can be String only',requirement = True)
+parser.add_argument('topic',type=str,help='Topic Can be String only' ,required = True)
+parser.add_argument('description',type=str,help='Description Can be String only' ,required = True)
+parser.add_argument('resource_link',type=str,help='Resource link Can be String only',required = True)
 
 Study_Material_field = {
     'id' : fields.Integer,
