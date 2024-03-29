@@ -9,7 +9,7 @@ class User(db.Model):
     active = db.Column(db.Boolean)
     fs_uniquifier = db.Column(db.String(255),unique = True,nullable=False)
     role_id = db.Column(db.Integer, db.ForeignKey('role.id'), nullable=False)
-    study_resource = db.relationship('StudyResource',backref='creator')
+    # study_resource = db.relationship('StudyResource',backref='creator')
 
 class Role(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -20,6 +20,6 @@ class StudyResource(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     topic = db.Column(db.String,nullable=False)
     description = db.Column(db.String,nullable=False)
-    cretor_id = db.Column(db.Integer,db.ForeignKey('user_id'),nullable=False)
+    # cretor_id = db.Column(db.Integer,db.ForeignKey('user_id'),nullable=False)
     resource_link = db.Column(db.String,nullable=False)
     is_approved = db.Column(db.Boolean,default = False)
