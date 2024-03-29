@@ -2,8 +2,8 @@ from flask_restful import Resource,Api,reqparse,marshal_with,fields
 from.models import db,StudyResource,Role,User
 
 api = Api(prefix='/api')
-parser = reqparse.RequestParser()
 
+parser = reqparse.RequestParser()
 parser.add_argument('topic',type=str,help='Topic Can be String only' ,required = True)
 parser.add_argument('description',type=str,help='Description Can be String only' ,required = True)
 parser.add_argument('resource_link',type=str,help='Resource link Can be String only',required = True)
@@ -18,7 +18,9 @@ Study_Material_field = {
 class StudyMaterial(Resource):
     @marshal_with(Study_Material_field)
     def get(self):
-        pass
+        all_study_material = StudyResource.query.all()
+        print(all_study_material)
+        return all_study_material
     def post(self):
         args = parser.parse_args()
         studyresource = StudyResource(**args)
@@ -26,5 +28,5 @@ class StudyMaterial(Resource):
         db.session.commit()
         return studyresource
         return {'message':"Study Resources Created"}
-        pass
+    
 api.add_resource(StudyMaterial,'/Study_material')
