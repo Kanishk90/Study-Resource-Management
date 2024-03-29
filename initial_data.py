@@ -6,9 +6,10 @@ with app.app_context():
     admin = Role(id = 'admin',name = 'Admin',description = 'Admin description')
     db.session.add(admin)
     stud = Role(id = 'stud',name = 'Student',description = 'Student description')
-    db.session.add(admin)
+    db.session.add(stud)
     inst = Role(id = 'inst',name = 'Instructor',description = 'Instructor description')
-    db.session.add(admin)
+    db.session.add(inst)
+    # db.session.commit()
     try:
         db.session.commit()
     except:
